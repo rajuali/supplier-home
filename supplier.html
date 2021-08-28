@@ -44,13 +44,13 @@ function sub(){
   var price = document.getElementById("price").value;
   var model = document.getElementById("model").value;
   var res;
-  const url=`http://localhost:3000/api/supplier/`;
+  const url=`https://raju-supplier-app.herokuapp.com/api/supplier/`;
   Http.open("post", url);
   Http.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
   Http.send(`name=${name}&area=${area}&location=${location}&quantity=${quantity}&price=${price}&model=${model}`);
   Http.onload=()=>{
     res = JSON.parse(Http.response);
-    if(res.affectedRows && res.affectedRows === 1)
+    if(res.insertedId)
     {
       alert("Supplier added");
     }
