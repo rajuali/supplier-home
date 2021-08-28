@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Add Supplier</h2>
+
+<form id="myForm" action="javascript:void(0)" onsubmit="sub()" enctype="application/x-www-form-urlencoded">
+  Supplier Name:
+  <br>
+  <input type="text" name="name" id="name" value="" title="name" required>
+  <br>
+  Area:
+  <br>
+  <input type="text" name="area" id="area" value="" title="name" required>
+  <br>
+  Location:
+  <br>
+  <input type="text" name="location" id="location" value="" title="location" required>
+  <br>
+  Quantity:
+  <br>
+  <input type="text" name="quantity" id="quantity" value="" title="quantity" required>
+  <br>
+  Price:
+  <br>
+  <input type="text" name="price" id="price" value="" title="price" required>
+  <br>
+  Model:
+  <br>
+  <input type="text" name="model" id="model" value="" title="model" required>
+  <br>
+  <br><br>
+  <input type="submit" value="Submit">
+</form>
+
+<script>
+
+function sub(){
+  const Http = new XMLHttpRequest();
+  var name = document.getElementById("name").value;
+  var area = document.getElementById("area").value;
+  var location = document.getElementById("location").value;
+  var quantity = document.getElementById("quantity").value;
+  var price = document.getElementById("price").value;
+  var model = document.getElementById("model").value;
+  var res;
+  const url=`http://localhost:3000/api/supplier/`;
+  Http.open("post", url);
+  Http.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+  Http.send(`name=${name}&area=${area}&location=${location}&quantity=${quantity}&price=${price}&model=${model}`);
+  Http.onload=()=>{
+    res = JSON.parse(Http.response);
+    if(res.affectedRows && res.affectedRows === 1)
+    {
+      alert("Supplier added");
+    }
+    else {
+      alert("Error occured check all field value and types");
+    }
+  }
+}
+
+</script>
+
+</body>
+</html>
