@@ -2,7 +2,7 @@
 <html>
 <body>
 
-<h2>Add Supplier</h2>
+<h2>Add Supplier <button onclick="go()">View Suppliers</button></h2>
 
 <form id="myForm" action="javascript:void(0)" onsubmit="sub()" enctype="application/x-www-form-urlencoded">
   Supplier Name:
@@ -63,6 +63,10 @@ function sub(){
       alert("Error occured check all field value and types");
     }
   }
+}
+
+function go() {
+  window.location.href = "https://rajuali.github.io/supplier-home/";
 }
 
 </script>
